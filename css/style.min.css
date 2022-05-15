@@ -1,0 +1,500 @@
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[class] {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.ms-container {
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+.ms-container .ms-selectable,
+.ms-container .ms-selection {
+  background: #fff;
+  color: #232323;
+}
+.ms-container .ms-selectable span,
+.ms-container .ms-selection span {
+  font-size: 13px;
+  line-height: 125%;
+}
+
+.ms-container .ms-list {
+  position: relative;
+  height: 80px;
+  padding: 0;
+  overflow-y: scroll;
+}
+
+.ms-container .ms-list::-webkit-scrollbar {
+  width: 10px;
+  background-color: #eee;
+}
+
+.ms-container .ms-list::-webkit-scrollbar-thumb {
+  background-color: #5B5B5B;
+}
+
+.ms-container .ms-selectable li.ms-elem-selectable {
+  border-bottom: 1px #eee solid;
+  padding: 12px;
+  color: #232323;
+  font-size: 14px;
+}
+
+.ms-container .ms-selectable li.ms-hover {
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  background-color: #F0BF11;
+}
+
+.pull-right.ms-elem-selected {
+  float: right;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 125%;
+  background-color: #eee;
+}
+
+.container {
+  max-width: 1330px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.btn {
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  background-color: #F0BF11;
+  border: none;
+  color: #fff;
+  padding: 8px 32px;
+  cursor: pointer;
+}
+
+.logout {
+  margin-bottom: 35px;
+}
+
+.tabs {
+  margin-top: 10px;
+}
+
+.tabs__nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style-type: none;
+  margin-bottom: 5px;
+}
+
+.tabs__btn {
+  padding: 8px 30px;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  cursor: pointer;
+  background-color: #232323;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  border: none;
+  text-transform: capitalize;
+}
+
+.tabs__btn_active {
+  background-color: #F0BF11;
+  cursor: default;
+}
+
+.tabs__pane {
+  display: none;
+}
+
+.tabs__pane_show {
+  display: block;
+}
+
+.popup__btn {
+  background-color: #232323;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  padding: 8px 25px;
+  margin-bottom: 5px;
+}
+
+.popup__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+}
+
+.add__form {
+  background: #232323;
+  width: 520px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 20px;
+  margin: 100px auto;
+  position: relative;
+  text-transform: capitalize;
+}
+.add__form input,
+.add__form select,
+.add__form .search-input {
+  display: block;
+  max-width: 250px;
+  height: 40px;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  text-transform: capitalize;
+}
+.add__form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.add__form-btn {
+  max-width: 160px !important;
+}
+
+.search-input {
+  margin-bottom: 20px;
+}
+
+.popup__title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.popup__text {
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  margin-left: 50px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  height: auto;
+}
+
+.table td,
+.table th {
+  border-bottom: 1px solid #5B5B5B;
+}
+
+.table td,
+.table th {
+  padding: 10px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.table th {
+  color: #232323;
+  font-weight: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.table td.edit,
+.table th.edit {
+  width: 32px;
+  padding: 0;
+  text-align: right;
+}
+.table td.edit__link,
+.table th.edit__link {
+  margin: 0 auto;
+}
+
+.table td.edit {
+  border: 1px solid #232323;
+}
+
+.edit__link img {
+  margin: 0 auto;
+}
+
+.editPage {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #fff;
+  margin-top: 100px;
+  height: 700px;
+  text-align: center;
+}
+
+.login__info {
+  padding: 150px 70px 0;
+  width: 100%;
+}
+.login__info-title {
+  font-size: 24px;
+  line-height: 130%;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.login__info-subtitle {
+  font-size: 13px;
+  line-height: 130%;
+  margin-bottom: 35px;
+}
+
+.login__form {
+  background: #232323;
+  max-width: 530px;
+  width: 100%;
+}
+.login__form-title {
+  margin-top: 190px;
+  font-size: 24px;
+  line-height: 125%;
+  color: #fff;
+  margin-bottom: 35px;
+  text-transform: uppercase;
+}
+.login__form-box {
+  max-width: 310px;
+  height: 40px;
+  margin: 0 auto 35px;
+  position: relative;
+}
+.login__form-login, .login__form-password {
+  width: 40px;
+  height: 40px;
+  background-color: #F0BF11;
+  position: absolute;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.login__form-input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  padding: 8px 40px 8px 60px;
+  outline: none;
+  font-size: 18px;
+}
+.login__form-input::-webkit-input-placeholder {
+  font-size: 18px;
+  line-height: 125%;
+}
+.login__form-input::-moz-placeholder {
+  font-size: 18px;
+  line-height: 125%;
+}
+.login__form-input:-ms-input-placeholder {
+  font-size: 18px;
+  line-height: 125%;
+}
+.login__form-input::-ms-input-placeholder {
+  font-size: 18px;
+  line-height: 125%;
+}
+.login__form-input::placeholder {
+  font-size: 18px;
+  line-height: 125%;
+}
+.login__form-btn {
+  margin-top: 15px;
+}
+
+.menu__list {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.menu__list-item {
+  background-color: #232323;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  width: 100%;
+  padding: 19px 0px;
+  padding-left: 40px;
+  padding-right: 22px;
+  position: relative;
+  text-transform: uppercase;
+}
+.menu__list-item::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-image: url(../images/menu/settings.svg);
+  background-repeat: no-repeat;
+  left: 21px;
+  top: 21px;
+}
+.menu__list-cars::before {
+  background-image: url(../images/menu/cars.svg);
+  left: 40px;
+}
+.menu__list-clients::before {
+  background-image: url(../images/menu/clients.svg);
+  left: 60px;
+}
+.menu__list-managers::before {
+  background-image: url(../images/menu/managers.svg);
+  left: 45px;
+}
+.menu__list-files::before {
+  background-image: url(../images/menu/file.svg);
+  left: 75px;
+}
+.menu__list-item.active {
+  background-color: #F0BF11;
+}
+
+.home__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.home__aside {
+  max-width: 310px;
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  margin-right: 20px;
+}
+.home__aside-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 35px auto 25px;
+}
+.home__aside-name {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.home__aside-post {
+  margin-bottom: 30px;
+}
+
+.home__content {
+  background-color: #fff;
+  width: 100%;
+}
+.home__content-welcome {
+  background-color: #eee;
+  margin: 50px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  color: #F0BF11;
+  padding: 36px 127px;
+}
