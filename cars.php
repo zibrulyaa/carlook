@@ -1,6 +1,8 @@
 <?php
-    require 'db/db.php'
-?>
+session_start(); //стартуем сессию
+
+//Если переменная auth из сессии не пуста и равна true, то дадим доступ:
+if (!empty($_SESSION['auth']) and $_SESSION['auth']):?>
 <!DOCTYPE html>
 <html lang=ru">
 
@@ -11,7 +13,8 @@
     <title>CarLook</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/libs.min.css">
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <?php    require 'db/db.php'?>
 </head>
 
 <body>
@@ -19,18 +22,10 @@
         <div class="container">
             <nav class="menu">
                 <ul class="menu__list">
-                    <li class="menu__list-item menu__list-home">
-                        <a class="menu__list-link" href="home.php">Личный
-                            Кабинет</a>
-                    </li>
-                    <li class="menu__list-item menu__list-cars active">
-                        <a class="menu__list-link" href="cars.php">Автомобили</a>
-                    </li>
-                    <li class="menu__list-item menu__list-clients ">
-                        <a class="menu__list-link" href="clients.php">Клиенты</a>
-                    </li>
-                    <li class="menu__list-item menu__list-managers ">
-                        <a class="menu__list-link" href="managers.php">Сотрудники</a>
+                    <li class="menu__list-item"><a class="menu__list-link menu__list-home" href="home.php">Личный Кабинет</a></li>
+                    <li class="menu__list-item"><a class="menu__list-link menu__list-cars active" href="cars.php">Автомобили</a></li>
+                    <li class="menu__list-item"><a class="menu__list-link menu__list-clients " href="clients.php">Клиенты</a></li>
+                    <li class="menu__list-item"><a class="menu__list-link menu__list-managers " href="managers.php">Сотрудники</a>
                     </li>
                 </ul>
             </nav>
@@ -102,8 +97,8 @@
         <form class="add__form" action="vendor/car/add.php" method="post">
             <div class="popup__title">Автомобиль</div>
             <label class="popup__inner">
-                <select name="brand">
-                    <option value="0">Выберите</option>
+                <select name="brand" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $vars = getBrand();
@@ -115,8 +110,8 @@
                 <p class="popup__text">Марка</p>
             </label>
             <label class="popup__inner">
-                <select name="model">
-                    <option value="0">Выберите</option>
+                <select name="model" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $vars = getModel();
@@ -128,8 +123,8 @@
                 <p class="popup__text">Модель</p>
             </label>
             <label class="popup__inner">
-                <select name="body">
-                    <option value="0">Выберите</option>
+                <select name="body" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $vars = getBody();
@@ -141,8 +136,8 @@
                 <p class="popup__text">Кузов</p>
             </label>
             <label class="popup__inner">
-                <select name="color">
-                    <option value="0">Выберите</option>
+                <select name="color" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $vars = getColor();
@@ -154,8 +149,8 @@
                 <p class="popup__text">Цвет</p>
             </label>
             <label class="popup__inner">
-                <select name="cnf">
-                    <option value="0">Выберите</option>
+                <select name="cnf" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $vars = getСnf();
@@ -167,12 +162,12 @@
                 <p class="popup__text">Комплектация</p>
             </label>
             <label class="popup__inner">
-                <input class="form-input" name="vin" type="text">
+                <input class="form-input" name="vin" type="text" required>
                 <p class="popup__text">VIN-номер</p>
             </label>
             <label class="popup__inner">
-                <select name="stock">
-                    <option value="0">Выберите</option>
+                <select name="stock" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $vars = getStock();
@@ -183,16 +178,14 @@
                 </select>
                 <p class="popup__text">Наличие</p>
             </label>
-
             <label class="popup__inner">
-                <input class="form-input" name="date" required="" type="date">
+                <input class="form-input" name="date" required type="date">
                 <p class="popup__text">Год Выпуска</p>
             </label>
             <label class="popup__inner">
-                <input class="form-input" name="price" type="text">
+                <input class="form-input" name="price" type="text" required>
                 <p class="popup__text">Итоговая стоимость</p>
             </label>
-
             <input class="add__form-btn btn" name="save" type="submit" value="Добавить">
         </form>
     </div>
@@ -201,12 +194,12 @@
         <form class="add__form" action="vendor/configuration/add.php" method="post">
             <div class="popup__title">Комплектация</div>
             <label class="popup__inner">
-                <input class="form-input" type="text" name="name">
+                <input class="form-input" type="text" name="name" required>
                 <p class="popup__text">Название</p>
             </label>
             <label class="popup__inner">
-                <select name="engine">
-                    <option value="0">Выберите</option>
+                <select name="engine" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $engines = getEngine();
@@ -218,8 +211,8 @@
                 <p class="popup__text">двигатель</p>
             </label>
             <label class="popup__inner">
-                <select name="gear">
-                    <option value="0">Выберите</option>
+                <select name="gear" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $gears = getGear();
@@ -228,11 +221,11 @@
                     }
                     ?>
                 </select>
-                <p class="popup__text">КПП</p>
+                <p class="popup__text" >КПП</p>
             </label>
             <label class="popup__inner">
-                <select name="drive">
-                    <option value="0">Выберите</option>
+                <select name="drive" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $drives = getDrive();
@@ -244,7 +237,7 @@
                 <p class="popup__text">Привод</p>
             </label>
             <label class="popup__inner">
-                <select name="options[]" id="additions" multiple='multiple'>
+                <select name="options[]" id="additions" multiple='multiple' required>
                     <?php
                         $con = mysqli_connect('localhost','root','', 'f0650590_carlook');
                         $query = "SELECT * FROM options";
@@ -274,7 +267,7 @@
         <form class="add__form" action="vendor/brand/add.php" method="post">
             <div class="popup__title">Марка</div>
             <label class="popup__inner">
-                <input class="form-input" name="name" type="text">
+                <input class="form-input" name="name" type="text" required>
                 <p class="popup__text">Название</p>
             </label>
             <input class="add__form-btn btn" type="submit" value="Добавить">
@@ -286,10 +279,10 @@
         <form class="add__form" action="vendor/model/add.php" method="post">
             <div class="popup__title">Модель</div>
             <label class="popup__inner">
-                <input class="form-input" name="name" type="text">
+                <input class="form-input" name="name" type="text" required>
                 <p class="popup__text">Название</p>
             </label>
-            <input class="add__form-btn btn" type="submit" value="Изменить">
+            <input class="add__form-btn btn" type="submit" value="Добавить">
         </form>
     </div>
     
@@ -298,7 +291,7 @@
         <form class="add__form" action="vendor/options/add.php" method="post">
             <div class="popup__title">Опции</div>
             <label class="popup__inner">
-                <input class="form-input" name="name" type="text">
+                <input class="form-input" name="name" type="text" required>
                 <p class="popup__text">Название</p>
             </label>
             <input class="add__form-btn btn" type="submit" value="Добавить">
@@ -310,15 +303,15 @@
         <form class="add__form" action="vendor/engine/add.php" method="post">
             <div class="popup__title">двигатель</div>
             <label class="popup__inner">
-                <input class="form-input" type="text" name="name">
+                <input class="form-input" type="text" name="name" required>
                 <p class="popup__text">Название</p>
             </label>
             <label class="popup__inner">
-                <input class="form-input" type="text" name="power">
+                <input class="form-input" type="text" name="power" required>
                 <p class="popup__text">Мощность</p>
             </label>
             <label class="popup__inner">
-                <input class="form-input" type="text" name="type">
+                <input class="form-input" type="text" name="type" required>
                 <p class="popup__text">Тип</p>
             </label>
             <input class="add__form-btn btn" type="submit" value="Добавить">
@@ -330,7 +323,7 @@
         <form class="add__form" action="vendor/color/add.php" method="post">
             <div class="popup__title">Цвета</div>
             <label class="popup__inner">
-                <input class="form-input" name="name" type="text">
+                <input class="form-input" name="name" type="text" required>
                 <p class="popup__text">Название</p>
             </label>
             <input class="add__form-btn btn" type="submit" value="Добавить">
@@ -342,7 +335,7 @@
         <form class="add__form" action="vendor/gear/add.php" method="post">
             <div class="popup__title">КПП</div>
             <label class="popup__inner">
-                <input class="form-input" name="name" type="text">
+                <input class="form-input" name="name" type="text" required>
                 <p class="popup__text">Название</p>
             </label>
             <input class="add__form-btn btn" type="submit" value="Добавить">
@@ -354,7 +347,7 @@
         <form class="add__form" action="vendor/body/add.php" method="post">
             <div class="popup__title">Кузов</div>
             <label class="popup__inner">
-                <input class="form-input" name="name" type="text">
+                <input class="form-input" name="name" type="text" required>
                 <p class="popup__text">Название</p>
             </label>
             <input class="add__form-btn btn" type="submit" value="Добавить">
@@ -366,7 +359,7 @@
         <form class="add__form" action="vendor/drive/add.php" method="post">
             <div class="popup__title">Кузов</div>
             <label class="popup__inner">
-                <input class="form-input" name="name" type="text">
+                <input class="form-input" name="name" type="text" required>
                 <p class="popup__text">Название</p>
             </label>
             <input class="add__form-btn btn" type="submit" value="Добавить">
@@ -378,3 +371,10 @@
 </body>
 
 </html>
+
+<?php
+else:
+    echo 'Доступ запрещен!';
+    ?>
+<?php   endif; ?>
+

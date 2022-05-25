@@ -1,7 +1,8 @@
 <?php
-require 'db/db.php'
-?>
+session_start(); //стартуем сессию
 
+//Если переменная auth из сессии не пуста и равна true, то дадим доступ:
+if (!empty($_SESSION['auth']) and $_SESSION['auth']):?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -12,7 +13,8 @@ require 'db/db.php'
     <title>CarLook</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/libs.min.css">
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <?php require 'db/db.php'?>
 </head>
 
 <body>
@@ -20,10 +22,11 @@ require 'db/db.php'
         <div class="container">
             <nav class="menu">
                 <ul class="menu__list">
-                    <li class="menu__list-item menu__list-home"><a class="menu__list-link" href="home.php">Личный Кабинет</a></li>
-                    <li class="menu__list-item menu__list-cars "><a class="menu__list-link" href="cars.php">Автомобили</a></li>
-                    <li class="menu__list-item menu__list-clients active"><a class="menu__list-link" href="clients.php">Клиенты</a></li>
-                    <li class="menu__list-item menu__list-managers "><a class="menu__list-link" href="managers.php">Сотрудники</a> </li>
+                    <li class="menu__list-item"><a class="menu__list-link menu__list-home" href="home.php">Личный Кабинет</a></li>
+                    <li class="menu__list-item"><a class="menu__list-link menu__list-cars " href="cars.php">Автомобили</a></li>
+                    <li class="menu__list-item"><a class="menu__list-link menu__list-clients active" href="clients.php">Клиенты</a></li>
+                    <li class="menu__list-item"><a class="menu__list-link menu__list-managers " href="managers.php">Сотрудники</a>
+                    </li>
                 </ul>
             </nav>
             <div class="clients__inner">
@@ -46,12 +49,12 @@ require 'db/db.php'
     <div class="popup__overlay mfp-hide" id="request">
         <form class="add__form" action="vendor/request/add.php" method="post">
             <div class="popup__title">Заявка</div> <label class="popup__inner">
-                <input class="form-input" name="date" type="date">
+                <input class="form-input" name="date" type="date" required>
                 <p class="popup__text">Дата</p>
             </label>
             <label class="popup__inner">
-                <select name="manager">
-                    <option value="0">Выберите</option>
+                <select name="manager" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $vars = getManager();
@@ -63,8 +66,8 @@ require 'db/db.php'
                 <p class="popup__text">Менеджер</p>
             </label>
             <label class="popup__inner">
-                <select name="client">
-                    <option value="0">Выберите</option>
+                <select name="client" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $vars = getClient();
@@ -76,8 +79,8 @@ require 'db/db.php'
                 <p class="popup__text">Клиент</p>
             </label>
             <label class="popup__inner">
-                <select name="car">
-                    <option value="0">Выберите</option>
+                <select name="car" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $vars = getCar();
@@ -93,8 +96,8 @@ require 'db/db.php'
                 <p class="popup__text">Автомобиль</p>
             </label>
             <label class="popup__inner">
-                <select name="status">
-                    <option value="0">Выберите</option>
+                <select name="status" required>
+                    <option value="">Выберите</option>
                     <?
                     global $db;
                     $vars = getStatus();
@@ -104,7 +107,8 @@ require 'db/db.php'
                     ?>
                 </select>
                 <p class="popup__text">Статус</p>
-            </label> <input class="add__form-btn btn" name="save" type="submit" value="Добавить">
+            </label>
+            <input class="add__form-btn btn" name="save" type="submit" value="Добавить">
         </form>
     </div>
 
@@ -112,18 +116,18 @@ require 'db/db.php'
         <form class="add__form" action="vendor/client/add.php" method="post">
             <div class="popup__title">Клиент</div>
             <label class="popup__inner">
-                <input class="form-input" name="fname" type="text">
+                <input class="form-input" name="fname" type="text" required>
                 <p class="popup__text">Фамилия</p>
             </label>
             <label class="popup__inner">
-                <input class="form-input" name="lname" type="text">
+                <input class="form-input" name="lname" type="text" required>
                 <p class="popup__text">Имя</p>
             </label>
-            <label class="popup__inner"> <input class="form-input" name="mname" type="text">
+            <label class="popup__inner"> <input class="form-input" name="mname" type="text" required>
                 <p class="popup__text">Отчество</p>
             </label>
             <label class="popup__inner">
-                <input class="form-input" name="tel" type="text">
+                <input class="form-input" name="tel" type="text" required>
                 <p class="popup__text">Телефон</p>
             </label> <input class="add__form-btn btn" name="save" type="submit" value="Добавить">
         </form>
@@ -132,3 +136,10 @@ require 'db/db.php'
 </body>
 
 </html>
+
+<?php
+else:
+echo 'Доступ запрещен!';
+?>
+<?php   endif; ?>
+
