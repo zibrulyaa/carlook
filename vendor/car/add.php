@@ -22,3 +22,4 @@ if(isset($_POST['save'])){
 
     header("Location: ../../cars.php");
 }
+exit(0);

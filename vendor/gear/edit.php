@@ -7,3 +7,4 @@ $tmp->execute([
      'id'=>$_POST['id']
 ]);
 header('Location: ../../cars.php');
+exit(0);

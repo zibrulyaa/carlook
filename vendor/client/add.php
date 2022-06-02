@@ -11,5 +11,5 @@ if(isset($_POST['save'])){
     $query = "INSERT INTO client (lastName, firstName, middleName, phone) VALUES ('$lname', '$fname', '$mname','$tel') ";
     $query_run = mysqli_query($con,$query);
     header("Location: ../../clients.php");
-
 }
+exit(0);

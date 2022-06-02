@@ -21,3 +21,4 @@ if(isset($_POST['save'])){
     $query_run = mysqli_query($con,$query);
     header("Location: ../../clients.php");
 }
+exit(0);

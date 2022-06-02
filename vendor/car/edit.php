@@ -26,6 +26,8 @@ if(isset($_POST['save'])){
                date = '$date',
                price = '$price'
                WHERE id = '$id'";
+
     $query_run = mysqli_query($con,$query);
     header("Location: ../../cars.php");
 }
+exit(0);

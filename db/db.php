@@ -1,11 +1,9 @@
 <?php
 try{
-    $dbhost = "localhost";
-    $dbname = "f0650590_carlook";
-    $username = "root";
-    $password = "";
+    require_once 'config.php';
+    global $host,$dbname,$username,$password;
 
-    $db = new PDO("mysql:host=$dbhost; dbname=$dbname", $username, $password);
+    $db = new PDO("mysql:host=$host; dbname=$dbname", $username, $password);
 
 
     // Вывод на экран значений таблицы Drive

@@ -14,3 +14,4 @@ if(isset($_POST['save'])){
     header("Location: ../../managers.php");
 
 }
+exit(0);

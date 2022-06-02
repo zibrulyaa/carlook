@@ -11,5 +11,5 @@ $tmp->execute([
     'type' => $_POST['type'],
 ]);
 header("Location: ../../cars.php");
-
+exit(0);
 

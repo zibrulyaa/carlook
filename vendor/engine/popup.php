@@ -9,15 +9,7 @@ $engine = $query->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang=ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarLook</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/libs.min.css">
-    <link rel="stylesheet" href="../../css/style.min.css">
-</head>
+<? require_once '../../vendor/head.php'?>
 <body class="editPage">
 <section class="cars">
     <div class="container">
@@ -38,7 +30,7 @@ $engine = $query->fetch(PDO::FETCH_ASSOC);
                     <input class="form-input" type="text" name="type" value="<?= $engine['type']?>">
                     <p class="popup__text">Тип</p>
                 </label>
-                <input class="add__form-btn btn" type="submit" value="Изменить">
+                <input class="add__form-btn btn" name="save" type="submit" value="Изменить">
             </form>
         </div>
     </div>

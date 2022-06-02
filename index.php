@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang=ru">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Авторизация</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/libs.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<? require "vendor/head.php"?>
 
 <body>
     <section class="login">
@@ -45,10 +37,11 @@
                         ВЫБРАТЬ ИЗ таблицы_users ГДЕ поле_логин = $login
                         */
 
-                        $mysql = new mysqli('localhost', 'root', '', 'f0650590_carlook');
+                        require_once 'db/connect.php';
+                        global $con;
 
                         $query = 'SELECT * FROM users WHERE login="' . $login . '"';
-                        $result = $mysql->query($query); //ответ базы запишем в переменную $result
+                        $result = $con->query($query); //ответ базы запишем в переменную $result
 
                         //Преобразуем ответ из БД в нормальный массив PHP:
                         $user = $result->fetch_assoc();
@@ -82,7 +75,7 @@
                                 echo  '<p class="error">Неправильный логин или пароль</p>';
                             }
                         } else {
-                            //Нет такого логина, выведем сообщение об ошибке.
+                            //Выводим сообщение 'Неправильный логин или пароль'.
                             echo  '<p class="error">Неправильный логин или пароль</p>';
                         }
                     }?>

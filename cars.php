@@ -1,4 +1,4 @@
-<?php
+<?
 session_start(); //стартуем сессию
 
 //Если переменная auth из сессии не пуста и равна true, то дадим доступ:
@@ -6,17 +6,8 @@ if (!empty($_SESSION['auth']) and $_SESSION['auth']):?>
 <!DOCTYPE html>
 <html lang=ru">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarLook</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/libs.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <?php    require 'db/db.php'?>
-</head>
-
+<? require_once 'vendor/head.php'?>
+<?   require 'db/db.php'?>
 <body>
     <section class="cars">
         <div class="container">
@@ -239,7 +230,8 @@ if (!empty($_SESSION['auth']) and $_SESSION['auth']):?>
             <label class="popup__inner">
                 <select name="options[]" id="additions" multiple='multiple' required>
                     <?php
-                        $con = mysqli_connect('localhost','root','', 'f0650590_carlook');
+                        require 'db/connect.php';
+                        global $con;
                         $query = "SELECT * FROM options";
                         $query_run = mysqli_query($con,$query);
                         if(mysqli_num_rows($query_run) > 0){

@@ -14,3 +14,4 @@ if(isset($_POST['save'])){
     $query_run = mysqli_query($con,$query);
     header("Location: ../../managers.php");
 }
+exit(0);

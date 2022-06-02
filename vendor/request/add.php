@@ -14,3 +14,4 @@ if(isset($_POST['save'])){
     header("Location: ../../clients.php");
 
 }
+exit(0);
